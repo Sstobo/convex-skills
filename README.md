@@ -13,18 +13,9 @@ Each skill provides context-aware guidance, code examples, and best practices th
 
 ## Installation
 
-Simply copy the skill folders you need directly into your project's `.claude/skills/` directory:
+Simply copy the skill folders you need directly into your project's `.claude/skills/` directory and restart the Claude Code cli.
 
-```bash
-# Copy all skills
-cp -r convex-* /path/to/your-project/.claude/skills/
-
-# Or copy specific skills
-cp -r convex-queries /path/to/your-project/.claude/skills/
-cp -r convex-agents-fundamentals /path/to/your-project/.claude/skills/
-```
-
-Once installed, Claude Code will automatically load these skills and use them when you're working with Convex code.
+Once copied, Claude Code will automatically load these skills and use them when you're working with Convex code.
 
 ## Available Skills
 
@@ -85,84 +76,6 @@ skill-name/
 │   └── *.md
 ├── scripts/              # Helper scripts (if applicable)
 └── assets/               # Images, diagrams (if applicable)
-```
-
-## How Claude Code Uses These Skills
-
-When you're working in a Convex project, Claude Code will:
-1. **Automatically detect** when you're working with Convex code
-2. **Load relevant skills** based on your task (queries, mutations, agents, etc.)
-3. **Provide expert guidance** using patterns from the skill documentation
-4. **Generate production-ready code** that follows Convex best practices
-
-You don't need to explicitly invoke skills—Claude Code intelligently applies them based on context.
-
-## Quick Start Examples
-
-### Creating a Query with Pagination
-
-When you ask Claude to create a paginated query, the **convex-queries** skill ensures:
-- Proper use of `paginationOptsValidator`
-- Index usage instead of `filter()`
-- Correct ordering and result collection
-
-```typescript
-export const getMessages = query({
-  args: {
-    channelId: v.id("channels"),
-    paginationOpts: paginationOptsValidator,
-  },
-  handler: async (ctx, args) => {
-    return await ctx.db
-      .query("messages")
-      .withIndex("by_channel", (q) => q.eq("channelId", args.channelId))
-      .order("desc")
-      .paginate(args.paginationOpts);
-  },
-});
-```
-
-### Building a Chat Agent
-
-The **convex-agents-fundamentals** skill guides you through:
-- Component installation in `convex.config.ts`
-- Agent instance creation with language models
-- Thread and message management
-
-```typescript
-import { Agent } from "@convex-dev/agent";
-import { openai } from "@ai-sdk/openai";
-
-export const chatAgent = new Agent(components.agent, {
-  name: "Support Assistant",
-  languageModel: openai.chat("gpt-4o-mini"),
-  instructions: "You are a helpful customer support assistant.",
-});
-```
-
-### Adding Tools to an Agent
-
-The **convex-agents-tools** skill shows you how to:
-- Define tools with proper validators
-- Implement tool handlers
-- Attach tools to agents
-
-```typescript
-const searchTool = tool({
-  description: "Search the knowledge base",
-  parameters: z.object({
-    query: z.string(),
-  }),
-  execute: async ({ query }) => {
-    // Search implementation
-    return results;
-  },
-});
-
-export const assistantAgent = new Agent(components.agent, {
-  languageModel: openai.chat("gpt-4o"),
-  tools: { search: searchTool },
-});
 ```
 
 ## Key Principles Across All Skills
