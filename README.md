@@ -4,9 +4,10 @@ A comprehensive collection of specialized skills for Claude Code that provide ex
 
 ## What is This?
 
-This repository contains **17 specialized skills** that augment Claude Code with deep expertise in:
+This repository contains **21 specialized skills** that augment Claude Code with deep expertise in:
 - **Core Convex**: Queries, mutations, and actions
 - **Convex Agents**: Building AI-powered conversational interfaces with the @convex-dev/agent component
+- **Full-Stack Integration**: Convex + TanStack Start, Better Auth, and Vercel AI Elements
 - **Advanced Features**: File storage, HTTP endpoints, scheduling, rate limiting, and more
 
 Each skill provides context-aware guidance, code examples, and best practices that help you build faster and avoid common pitfalls.
@@ -64,6 +65,17 @@ The [@convex-dev/agent](https://github.com/get-convex/agent) component enables b
 | **convex-agents-files** | File handling in conversations, attachments | Processing uploaded documents, images |
 | **convex-agents-debugging** | Debugging agents, logging, error handling | Troubleshooting agent behavior, monitoring |
 | **convex-agents-playground** | Testing agents, experimentation environment | Development, testing different prompts/models |
+
+### Full-Stack Integration
+
+Skills for building complete applications with Convex and modern React frameworks.
+
+| Skill | Description | Use When |
+|-------|-------------|----------|
+| **convex-tanstack** | Full-stack apps with Convex + TanStack Start, covering schema, queries, mutations, auth, SSR, and frontend patterns | Building reactive full-stack apps with TanStack Start |
+| **betterauth-tanstack-convex** | Better Auth integration with TanStack and Convex | Setting up authentication in Convex + TanStack projects |
+| **vercel-ai-elements** | 23 UI components for conversational AI interfaces (messages, conversations, inputs, content display, AI processing) | Building AI chatbots, chat UIs, or integrating with AI SDK |
+| **ai-elements-workflow** | Workflow visualizations with Vercel AI Elements and React Flow (Canvas, Node, Edge, Controls, Panel, Toolbar) | Building interactive node-based workflow diagrams |
 
 ## Skill Structure
 
